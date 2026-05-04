@@ -13,6 +13,13 @@
 
 ---
 
+## Configurações Básicas da Arduino IDE
+
+- Ajuste as opções da IDE, no menu Arquivo ou File ---> Preferences:
+- **Tamanho da Fonte**: escolha um tamanho que facilite a leitura em sala (ex: 14 ou 16)
+- Escolha o tema de sua preferência.
+- Habilite a opção "Editor Quicks Suggestions".
+
 ## Descrição do circuito
 
 O circuito disponibilizado simula uma instalação de geração solar de pequeno porte. Antes de escrever qualquer linha de código, **analise o diagrama no Tinkercad** e identifique a ligação de cada componente ao Arduino. O mapeamento dos pinos faz parte da avaliação.

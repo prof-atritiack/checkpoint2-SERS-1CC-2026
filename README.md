@@ -5,7 +5,8 @@
 **Modalidade:** Presencial — válido somente para alunos presentes
 -----
 ## Circuito base no Tinkercad
-****  
+
+https://www.tinkercad.com/things/28QEgg4Pb1I-checkpoint-02-sers-1cc-2026-1sem?sharecode=Bxc4rRv9Vy0ou-7XMgv0fatFfWdxCSP0TECy5HelR5A
 
 -----
 ## Descrição do circuito

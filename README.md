@@ -11,80 +11,41 @@
 
 **[Acesse o circuito aqui → LINK_DO_TINKERCAD](https://www.tinkercad.com/things/28QEgg4Pb1I-checkpoint-02-sers-1cc-2026-1sem?sharecode=Bxc4rRv9Vy0ou-7XMgv0fatFfWdxCSP0TECy5HelR5A)**  
 
-
 ---
 
 ## Descrição do circuito
 
-O circuito disponibilizado simula uma instalação de geração solar de pequeno porte e conta com os seguintes componentes:
+O circuito disponibilizado simula uma instalação de geração solar de pequeno porte. Antes de escrever qualquer linha de código, **analise o diagrama no Tinkercad** e identifique a ligação de cada componente ao Arduino. O mapeamento dos pinos faz parte da avaliação.
+
+O circuito conta com:
 
 - **Arduino Uno**
-- **Display LCD 16x2 com módulo I2C** — biblioteca `Adafruit_LiquidCrystal`
-- **LED vermelho** — pino digital **2**
-- **LED amarelo** — pino digital **4**
-- **LED verde** — pino digital **6**
-- **String Solar 1** — 3 módulos em série (36V por string) — divisor de tensão pré-calculado — pino **A2**
-- **String Solar 2** — 3 módulos em série (36V por string) — divisor de tensão pré-calculado — pino **A3**
+- **LED vermelho**
+- **LED amarelo**
+- **LED verde**
+- **String Solar 1** — 3 módulos em série (36V por string) com divisor de tensão pré-calculado
+- **String Solar 2** — 3 módulos em série (36V por string) com divisor de tensão pré-calculado
 
-Os divisores de tensão já estão calculados e montados no circuito. Os pinos A2 e A3 recebem valores analógicos (0–1023) proporcionais à tensão de cada string.
+Os divisores de tensão já estão calculados e montados no circuito. As entradas analógicas recebem valores (0–1023) proporcionais à tensão de cada string.
 
 ---
 
 ## Código base
 
-O código abaixo é o ponto de partida obrigatório. Ele realiza o teste de inicialização do LCD no `setup()`. Não remova nem altere esse bloco — adicione seu código apenas a partir dos comentários indicados.
-
 ```cpp
-#include <Adafruit_LiquidCrystal.h>
-
-// LCD I2C inicializado no endereco 0
-Adafruit_LiquidCrystal lcd(0);
-
-// Pinos dos LEDs
-const int LED_VERMELHO = 2;
-const int LED_AMARELO  = 4;
-const int LED_VERDE    = 6;
-
-// Pinos das strings solares
-const int STRING1 = A2;
-const int STRING2 = A3;
-
-// Tensao de referencia e fator do divisor de tensao
-const float VREF      = 5.0;   // Tensao de referencia do Arduino (V)
-const float FATOR_DIV = 10.0;  // Fator do divisor pre-calculado
+// Mapeie os pinos a partir da analise do diagrama no Tinkercad
+// Declare aqui suas constantes de pinos e quaisquer variaveis globais
 
 void setup() {
   Serial.begin(9600);
 
-  // Inicializacao dos LEDs
-  pinMode(LED_VERMELHO, OUTPUT);
-  pinMode(LED_AMARELO,  OUTPUT);
-  pinMode(LED_VERDE,    OUTPUT);
+  // Configure os modos dos pinos identificados
 
-  // --- Teste de inicializacao do LCD ---
-  lcd.begin(16, 2);
-  lcd.setBacklight(1);
-  lcd.setCursor(0, 0);
-  lcd.print("Solar Monitor");
-  lcd.setCursor(0, 1);
-  lcd.print("Iniciando...");
-  delay(2000);
-  lcd.clear();
-  // --- Fim do teste de inicializacao ---
-
-  // Adicione aqui qualquer configuracao extra que seu exercicio precisar
+  // Adicione qualquer outra configuracao que seu exercicio precisar
 }
 
 void loop() {
-  // Leitura dos valores analogicos das strings
-  int raw1 = analogRead(STRING1);
-  int raw2 = analogRead(STRING2);
-
-  // Conversao para tensao real considerando o divisor
-  float tensao1 = (raw1 / 1023.0) * VREF * FATOR_DIV;
-  float tensao2 = (raw2 / 1023.0) * VREF * FATOR_DIV;
-
-  // Implemente aqui a logica do seu exercicio
+  // Realize a leitura das strings e implemente a logica do seu exercicio
 
   delay(1000);
 }
@@ -96,9 +57,9 @@ void loop() {
 
 A empresa **SolarGrid Soluções em Energia**, especializada em instalação e monitoramento de sistemas fotovoltaicos de pequeno e médio porte, firmou contrato com sua equipe de desenvolvimento para criar um **sistema embarcado de monitoramento e controle** para uma instalação piloto.
 
-O sistema conta com duas strings solares independentes, cada uma composta por três módulos em série, totalizando tensão nominal de **36V por string**. A equipe de engenharia elétrica já dimensionou e montou os divisores de tensão para adequar os sinais ao Arduino. Sua responsabilidade é **desenvolver o firmware** que transforma esses dados brutos em informação útil para o operador da planta.
+O sistema conta com duas strings solares independentes, cada uma composta por três módulos em série, totalizando tensão nominal de **36V por string**. A equipe de engenharia elétrica já dimensionou e montou os divisores de tensão para adequar os sinais ao Arduino. Sua responsabilidade é **analisar o diagrama, mapear o circuito e desenvolver o firmware** que transforma esses dados brutos em informação útil para o operador da planta.
 
-Cada exercício representa uma demanda real levantada pela equipe de engenharia. Resolva o exercício indicado pelo seu professor.
+Todas as saídas devem ser exibidas pelo **Serial Monitor**. Os LEDs sinalizam o estado do sistema de forma visual. Resolva o exercício indicado pelo seu professor.
 
 ---
 
@@ -106,14 +67,14 @@ Cada exercício representa uma demanda real levantada pela equipe de engenharia.
 
 ### Exercício 1 — Painel de leitura em tempo real
 
-A equipe de campo precisa de uma forma rápida de conferir a tensão de cada string durante a operação, sem necessidade de equipamentos adicionais. Implemente um sistema que:
+A equipe de campo precisa monitorar continuamente a tensão de cada string durante a operação. Implemente um sistema que:
 
-- Leia continuamente a tensão das duas strings solares (A2 e A3)
-- Exiba no LCD, alternando a cada 2 segundos:
-  - Linha 1: `S1: XX.X V`
-  - Linha 2: `S2: XX.X V`
-- Enquanto exibe a leitura da String 1, mantenha o LED amarelo aceso; enquanto exibe a da String 2, mantenha o LED verde aceso
-- Exiba os valores também no Serial Monitor, formatados com unidade
+- Leia a tensão das duas strings a cada segundo
+- Exiba no Serial Monitor, a cada leitura:
+  - `S1: XX.X V`
+  - `S2: XX.X V`
+- Enquanto a tensão da String 1 for maior que a da String 2, mantenha o LED amarelo aceso; caso contrário, mantenha o LED verde aceso
+- Se as tensões forem iguais, acenda ambos
 
 ---
 
@@ -122,9 +83,9 @@ A equipe de campo precisa de uma forma rápida de conferir a tensão de cada str
 A engenharia definiu que qualquer string abaixo de **20V** indica condição anormal — sombreamento, módulo com defeito ou falha de conexão. Implemente:
 
 - Monitoramento contínuo das duas strings
-- Se **ambas** estiverem acima de 20V: LED verde aceso, LCD exibe `Sistema OK`
-- Se **qualquer uma** estiver entre 10V e 20V: LED amarelo aceso, LCD exibe `Atencao: S[1 ou 2]` e o valor da tensão
-- Se **qualquer uma** cair abaixo de 10V: LED vermelho aceso, LCD exibe `FALHA: S[1 ou 2]` e o valor da tensão
+- Se **ambas** estiverem acima de 20V: LED verde aceso, Serial Monitor exibe `Sistema OK`
+- Se **qualquer uma** estiver entre 10V e 20V: LED amarelo aceso, Serial Monitor exibe `Atencao: S[1 ou 2] = XX.X V`
+- Se **qualquer uma** cair abaixo de 10V: LED vermelho aceso, Serial Monitor exibe `FALHA: S[1 ou 2] = XX.X V`
 - Apenas um LED deve ficar aceso por vez; prioridade: vermelho > amarelo > verde
 
 ---
@@ -134,19 +95,19 @@ A engenharia definiu que qualquer string abaixo de **20V** indica condição ano
 A equipe de monitoramento precisa estimar a potência gerada por cada string. Considerando corrente nominal de **8A por string**, implemente:
 
 - Cálculo de potência estimada para cada string: `P = V x I`
-- Exibição no LCD em alternância de 2 segundos cada:
+- Exibição no Serial Monitor a cada ciclo:
   - `P1: XXX W`
   - `P2: XXX W`
   - `Total: XXX W`
 - Cálculo da eficiência relativa entre as strings: `Ef = (menor / maior) x 100%`
+  - `Eficiencia: XX.X %`
 - Se eficiência relativa for **>= 90%**: LED verde
 - Se entre **70% e 89%**: LED amarelo
 - Se **< 70%**: LED vermelho — desbalanceamento crítico
-- Exibir no Serial Monitor as tensões, potências e eficiência relativa a cada ciclo
 
 ---
 
-### Exercício 4 — Registro de estados no Serial Monitor
+### Exercício 4 — Registro de mudanças de estado
 
 A equipe de engenharia precisa acompanhar a evolução do estado operacional de cada string para identificar padrões de falha. Implemente:
 
@@ -154,10 +115,9 @@ A equipe de engenharia precisa acompanhar a evolução do estado operacional de 
   - **Normal:** V >= 25V
   - **Alerta:** 15V <= V < 25V
   - **Critico:** V < 15V
-- O estado atual de cada string deve ser exibido no LCD simultaneamente:
-  - Linha 1: `S1: NORMAL` ou `S1: ALERTA` ou `S1: CRITICO`
-  - Linha 2: `S2: NORMAL` ou `S2: ALERTA` ou `S2: CRITICO`
-- Sempre que qualquer string mudar de faixa, registrar no Serial Monitor a mudança e o valor de tensão que a provocou. Exemplo: `S1: Normal -> Alerta (22.4V)`
+- A cada ciclo, exibir no Serial Monitor o estado atual das duas strings:
+  - `S1: NORMAL | S2: ALERTA`
+- Sempre que qualquer string mudar de faixa, registrar a transição separadamente. Exemplo: `S1: Normal -> Alerta (22.4V)`
 - Os LEDs refletem o estado mais grave entre as duas strings, usando o mesmo critério de prioridade do Exercício 2
 
 ---
@@ -168,11 +128,11 @@ A SolarGrid precisa de um módulo de decisão automática que simule o comportam
 
 - Leitura contínua das duas strings e cálculo da **tensão média**
 - Lógica de decisão baseada na tensão média:
-  - **>= 30V**: carga conectada — LED verde, LCD linha 1: `Carga: ON`, linha 2: `Vm: XX.X V`
-  - **Entre 20V e 29.9V**: carga em standby — LED amarelo, LCD linha 1: `Standby`, linha 2: `Vm: XX.X V`
-  - **< 20V**: carga desconectada — LED vermelho, LCD linha 1: `Carga: OFF`, linha 2: `Vm: XX.X V`
+  - **>= 30V**: carga conectada — LED verde, Serial Monitor exibe `Carga: ON | Vm: XX.X V`
+  - **Entre 20V e 29.9V**: carga em standby — LED amarelo, Serial Monitor exibe `Standby | Vm: XX.X V`
+  - **< 20V**: carga desconectada — LED vermelho, Serial Monitor exibe `Carga: OFF | Vm: XX.X V`
 - Implementar **histerese de 2V**: uma vez em estado de corte (< 20V), o sistema só retorna ao standby quando a tensão média superar **22V**, evitando oscilações rápidas
-- Registrar no Serial Monitor cada mudança de estado com o valor de tensão que provocou a transição
+- Sempre que o estado mudar, registrar no Serial Monitor a transição e o valor de tensão que a provocou
 
 ---
 

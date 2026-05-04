@@ -13,9 +13,9 @@
 
 ---
 
-## Configurações Básicas da Arduino IDE
+## Configurações Básicas do Arduino IDE
 
-- Ajuste as opções da IDE, no menu Arquivo ou File ---> Preferences:
+- Abra o Arduino IDE. Clique no menu File ---> Preferences:
 - **Tamanho da Fonte**: escolha um tamanho que facilite a leitura em sala (ex: 14 ou 16)
 - Escolha o tema de sua preferência.
 - Habilite a opção "Editor Quicks Suggestions".

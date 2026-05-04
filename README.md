@@ -190,7 +190,7 @@ Antes de copiar o link, é necessário tornar o projeto acessível. Siga os pass
 Crie um arquivo de texto simples com o seguinte formato:
 
 ```
-Exercicio: [número]
+Atividade: Checkpoint 02 - SERS
 Turma: 1CC[letra]
 
 Integrante 1: Nome Completo - RM XXXXX

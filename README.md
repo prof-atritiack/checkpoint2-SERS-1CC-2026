@@ -5,8 +5,8 @@
 **Modalidade:** Presencial — válido somente para alunos presentes
 -----
 ## Circuito base no Tinkercad
-**[Acesse o circuito aqui → LINK_DO_TINKERCAD](https://www.tinkercad.com/)**  
-*(substitua pelo link real antes de publicar)*
+****  
+
 -----
 ## Descrição do circuito
 O circuito disponibilizado simula uma instalação de geração solar de pequeno porte e conta com os seguintes componentes:

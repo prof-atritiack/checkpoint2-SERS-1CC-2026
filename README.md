@@ -32,6 +32,8 @@ Os divisores de tensão já estão calculados e montados no circuito. As entrada
 
 ## Código base
 
+Utilize a estrutura abaixo. Cada exercício deve ser implementado em sua própria função. No `loop()`, comente todas as chamadas exceto a do exercício que está testando no momento.
+
 ```cpp
 // Mapeie os pinos a partir da analise do diagrama no Tinkercad
 // Declare aqui suas constantes de pinos e quaisquer variaveis globais
@@ -45,11 +47,35 @@ void setup() {
 }
 
 void loop() {
-  // Realize a leitura das strings e implemente a logica do seu exercicio
+  // ex1();
+  // ex2();
+  // ex3();
+  // ex4();
+  // ex5();
+}
 
-  delay(1000);
+void ex1() {
+  // Exercicio 1
+}
+
+void ex2() {
+  // Exercicio 2
+}
+
+void ex3() {
+  // Exercicio 3
+}
+
+void ex4() {
+  // Exercicio 4
+}
+
+void ex5() {
+  // Exercicio 5
 }
 ```
+
+> Descomente apenas a chamada do exercício que está sendo testado. Deixe todas as implementações no arquivo — o professor irá descomentar cada função durante a correção.
 
 ---
 
@@ -59,7 +85,7 @@ A empresa **SolarGrid Soluções em Energia**, especializada em instalação e m
 
 O sistema conta com duas strings solares independentes, cada uma composta por três módulos em série, totalizando tensão nominal de **36V por string**. A equipe de engenharia elétrica já dimensionou e montou os divisores de tensão para adequar os sinais ao Arduino. Sua responsabilidade é **analisar o diagrama, mapear o circuito e desenvolver o firmware** que transforma esses dados brutos em informação útil para o operador da planta.
 
-Todas as saídas devem ser exibidas pelo **Serial Monitor**. Os LEDs sinalizam o estado do sistema de forma visual. Resolva o exercício indicado pelo seu professor.
+Todas as saídas devem ser exibidas pelo **Serial Monitor**. Os LEDs sinalizam o estado do sistema de forma visual.
 
 ---
 
@@ -67,10 +93,10 @@ Todas as saídas devem ser exibidas pelo **Serial Monitor**. Os LEDs sinalizam o
 
 ### Exercício 1 — Painel de leitura em tempo real
 
-A equipe de campo precisa monitorar continuamente a tensão de cada string durante a operação. Implemente um sistema que:
+A equipe de campo precisa monitorar continuamente a tensão de cada string durante a operação. Implemente a função `ex1()` com:
 
-- Leia a tensão das duas strings a cada segundo
-- Exiba no Serial Monitor, a cada leitura:
+- Leitura da tensão das duas strings a cada segundo
+- Exibição no Serial Monitor a cada ciclo:
   - `S1: XX.X V`
   - `S2: XX.X V`
 - Enquanto a tensão da String 1 for maior que a da String 2, mantenha o LED amarelo aceso; caso contrário, mantenha o LED verde aceso
@@ -80,7 +106,7 @@ A equipe de campo precisa monitorar continuamente a tensão de cada string duran
 
 ### Exercício 2 — Sistema de alarme de subtensão
 
-A engenharia definiu que qualquer string abaixo de **20V** indica condição anormal — sombreamento, módulo com defeito ou falha de conexão. Implemente:
+A engenharia definiu que qualquer string abaixo de **20V** indica condição anormal — sombreamento, módulo com defeito ou falha de conexão. Implemente a função `ex2()` com:
 
 - Monitoramento contínuo das duas strings
 - Se **ambas** estiverem acima de 20V: LED verde aceso, Serial Monitor exibe `Sistema OK`
@@ -92,7 +118,7 @@ A engenharia definiu que qualquer string abaixo de **20V** indica condição ano
 
 ### Exercício 3 — Cálculo de potência estimada e eficiência relativa
 
-A equipe de monitoramento precisa estimar a potência gerada por cada string. Considerando corrente nominal de **8A por string**, implemente:
+A equipe de monitoramento precisa estimar a potência gerada por cada string. Considerando corrente nominal de **8A por string**, implemente a função `ex3()` com:
 
 - Cálculo de potência estimada para cada string: `P = V x I`
 - Exibição no Serial Monitor a cada ciclo:
@@ -109,7 +135,7 @@ A equipe de monitoramento precisa estimar a potência gerada por cada string. Co
 
 ### Exercício 4 — Registro de mudanças de estado
 
-A equipe de engenharia precisa acompanhar a evolução do estado operacional de cada string para identificar padrões de falha. Implemente:
+A equipe de engenharia precisa acompanhar a evolução do estado operacional de cada string para identificar padrões de falha. Implemente a função `ex4()` com:
 
 - Monitoramento contínuo com três faixas de operação para cada string:
   - **Normal:** V >= 25V
@@ -124,7 +150,7 @@ A equipe de engenharia precisa acompanhar a evolução do estado operacional de 
 
 ### Exercício 5 — Sistema de decisão para proteção da carga
 
-A SolarGrid precisa de um módulo de decisão automática que simule o comportamento de um controlador de carga simples, protegendo os equipamentos conectados contra subtensão. Implemente:
+A SolarGrid precisa de um módulo de decisão automática que simule o comportamento de um controlador de carga simples, protegendo os equipamentos conectados contra subtensão. Implemente a função `ex5()` com:
 
 - Leitura contínua das duas strings e cálculo da **tensão média**
 - Lógica de decisão baseada na tensão média:
@@ -142,9 +168,15 @@ Cada equipe deve entregar dois itens.
 
 **1. Link do Tinkercad**
 
-- Acesse o circuito base, clique em **Share** e copie o link
-- O circuito deve estar funcional e com o código do exercício implementado
-- Certifique-se de que o link está configurado como público ou acessível por link
+Antes de copiar o link, é necessário tornar o projeto acessível. Siga os passos abaixo:
+
+1. Conclua o circuito e volte para a tela inicial do Tinkercad
+2. Clique no seu projeto e, em seguida, em **Alterar visibilidade**
+3. No campo **Privacidade**, selecione a opção **Compartilhar link** — visível para qualquer pessoa com o link
+4. Volte à tela anterior e clique em **Copiar link**
+5. Cole o link como anexo da tarefa no Teams
+
+> O circuito deve estar funcional e com o código de todos os exercícios implementados. Descomente apenas a chamada do exercício do seu grupo antes de entregar.
 
 **2. Arquivo `integrantes.txt`**
 

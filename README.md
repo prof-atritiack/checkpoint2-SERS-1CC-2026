@@ -43,7 +43,7 @@ Utilize a estrutura abaixo. Cada exercício deve ser implementado em sua própri
 
 ```cpp
 // Mapeie os pinos a partir da analise do diagrama no Tinkercad
-// Declare aqui suas constantes de pinos e quaisquer variaveis globais
+// Declare aqui suas variaveis globais
 
 void setup() {
   Serial.begin(9600);

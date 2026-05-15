@@ -88,6 +88,7 @@ void ex5() {
 > Descomente apenas a chamada do exercício que está sendo testado. Deixe todas as implementações no arquivo — o professor irá descomentar cada função durante a correção.
 
 > **[Exemplo da aula passada](https://www.tinkercad.com/things/iiSp1XUGXZ2-aula-07-monitor-de-tensao-sers-1cc?sharecode=5A1cL6znYtoHKlkmz6Sr44EHYEcYZv822sPQ4e1beW4)**
+
 > **[Acesse o circuito aqui → LINK_DO_TINKERCAD](https://www.tinkercad.com/things/28QEgg4Pb1I-checkpoint-02-sers-1cc-2026-1sem?sharecode=Bxc4rRv9Vy0ou-7XMgv0fatFfWdxCSP0TECy5HelR5A)** 
 
 ---
